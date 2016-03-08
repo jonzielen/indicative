@@ -1,1 +1,1 @@
-body{padding:0;margin:0;background-color:#ccc}
+body{padding:0;margin:0;background-color:#ccc}table{width:100%;border:solid 1px #000}table thead,table tbody{display:block}table tbody{height:100vh;overflow-y:auto;overflow-x:hidden}table tr:nth-child(odd){background-color:#fff}table td{padding:2px;height:150px}

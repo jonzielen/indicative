@@ -3,3 +3,26 @@ body {
   margin: 0;
   background-color: #ccc;
 }
+table {
+  width: 100%;
+  border: solid 1px #000;
+
+  thead, tbody {
+    display: block;
+  }
+
+  tbody {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  td {
+    padding: 2px;
+    height: 150px;
+  }
+}

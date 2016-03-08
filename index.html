@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="statsPageApp">
 <head>
   <meta charset="UTF-8">
   <title>Indicative Test</title>
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
+  <div ng-controller="StatsCtrl">
+    <pre>{{data | json}}</pre>
+  </div>
 
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+  <script src="js/app/controllers/statsController.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 </html>

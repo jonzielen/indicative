@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         files: ['js/src/*.js'],
         tasks: ['uglify'],
         options: {
-          spawn:false
+          spawn: false
         },
       },
       sass: {

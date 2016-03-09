@@ -8,8 +8,38 @@
 <body>
   <div ng-controller="StatsCtrl">
     <!-- <pre>{{data | json}}</pre> -->
+    <h1 id="stats-header">STATS</h1>
+
+    <div id="stats-columns">
+      <div>
+        <ul>
+          <li>Total Users: <span></span></li>
+          <li>Total Colors: <span></span></li>
+          <li>Percent of Females: <span></span>%</li>
+          <li>Percent of Males: <span></span>%</li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li>Total users who performed a "signed_up": <span></span></li>
+          <li>Total users who performed a "viewed_profile": <span></span></li>
+          <li>Total users who performed a "view_item": <span></span></li>
+          <li>Total users who performed a "purchased_item": <span></span></li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li>Conversion from Signup -> Purchase: <span></span>%</li>
+          <li>Conversion from Signup -> Viewed Profile -> Purchase: <span></span>%</li>
+          <li>Conversion from Signup -> Viewed Item -> Purchase Item: <span></span>%</li>
+        </ul>
+      </div>
+    </div>
+
     <input type="text" id="stats-first-name-search">
-    <button id="stats-add-row">add row</button>
+    <button id="stats-add-row">ADD ROW</button>
 
     <table>
       <thead>

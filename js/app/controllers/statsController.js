@@ -38,6 +38,23 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
         men: getPercent(count.males.length),
         women: getPercent(count.females.length)
       };
+
+      // get a list of all the colors
+      var fullColorList = [];
+      $scope.data.forEach(function(elem) {
+        if (elem.purchased_item !== undefined && elem.purchased_item.color !== undefined) {
+          fullColorList.push(elem.purchased_item.color);
+        }
+      });
+
+      var uniqueColorList = fullColorList.filter(function (keyword, index) {
+        return fullColorList.lastIndexOf(keyword) === index;
+      });
+
+      console.log(fullColorList);
+      console.log(uniqueColorList);
+
+
     }
 
     // error calling json

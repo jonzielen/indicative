@@ -3,26 +3,50 @@ body {
   margin: 0;
   background-color: #ccc;
 }
+
 table {
   width: 100%;
   border: solid 1px #000;
+  height: 300px;
+  overflow: auto;
+  background-color: #ddd;
+  border-collapse: collapse;
+  display: block;
 
-  thead, tbody {
+  thead,tbody {
+    width: 1200px;
+    margin: 0 auto;
     display: block;
   }
 
   tbody {
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height:260px;
+    overflow: auto;
+  }
+
+  th,td {
+    text-align: left;
+    display: inline-block;
+    margin:4px 6px;
+  }
+
+  $tdWidths: 100px 105px 80px 130px 175px 215px 275px;
+  @each $tdWidth in $tdWidths {
+      $i: index($tdWidths, $tdWidth);
+      th:nth-child(#{$i}),
+      td:nth-child(#{$i}) {
+        width: $tdWidth;
+      }
   }
 
   tr:nth-child(odd) {
     background-color: #fff;
   }
+}
 
-  td {
-    padding: 2px;
-    height: 150px;
-  }
+#stats-first-name-search {
+
+}
+#stats-add-row {
+  float:right;
 }

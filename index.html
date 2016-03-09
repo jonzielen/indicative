@@ -8,6 +8,8 @@
 <body>
   <div ng-controller="StatsCtrl">
     <!-- <pre>{{data | json}}</pre> -->
+    <input type="text" id="stats-first-name-search">
+    <button id="stats-add-row">add row</button>
 
     <table>
       <thead>
@@ -22,41 +24,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr ng-repeat="user in data">
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td>{{user.gender}}</td>
+          <td>{{user.company_name}}</td>
+          <td>{{user.job_title}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.id}}</td>
         </tr>
       </tbody>
     </table>

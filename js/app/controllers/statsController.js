@@ -11,12 +11,37 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
     // successful json call
     function successCallback(response) {
       $scope.data = response.data;
-    }
+      $scope.totalRecords = response.data.length;
 
+      var count = {
+        males: [],
+        females: []
+      };
+
+      // count number of men/women
+      response.data.forEach(function(g) {
+        switch (g.gender) {
+          case 'Male':
+            count.males.push('m');
+            break;
+          case 'Female':
+            count.females.push('f');
+            break;
+        }
+      });
+
+      function getPercent(item) {
+        return (item / $scope.totalRecords) * 100;
+      }
+
+      $scope.gender = {
+        men: getPercent(count.males.length),
+        women: getPercent(count.females.length)
+      };
+    }
 
     // error calling json
     function errorCallback() {
       $scope.data = 'an error';
     }
-
 });

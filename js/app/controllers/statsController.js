@@ -17,7 +17,8 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
         signedup: [],
         viewedProfile: [],
         viewedItem: [],
-        purchasedItem: []
+        purchasedItem: [],
+        conversions: []
       };
 
       $scope.data.forEach(function(user) {
@@ -38,6 +39,9 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
 
         // purchased item
         trueParentChild('purchased_item', 'date', user, count.purchasedItem);
+
+        // conversions
+        testConversions('signed_up', 'purchased_item', user, '', count.conversions);
       });
 
       // checks if user has parent prop and child prop, then adds value to array
@@ -77,7 +81,29 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
       // add colors length to scope
       $scope.colorsCount = uniqueColorList.length;
 
-      // adds count props length to scope
+
+
+      // tests conversions
+      function testConversions(signedup, purchased, user, viewed, arrayCollection) {
+        // check if user has signed up and has purchased prop
+        if (user.hasOwnProperty(signedup) && user.hasOwnProperty(purchased)) {
+          // check if purchased was comeplete, by checking date
+          if (user[purchased].hasOwnProperty('date')) {
+            // if the user signup date is the same or before purchase date
+            if (new Date(user[signedup].date) <= new Date(user[purchased].date)) {
+              console.log(user);
+              console.log(user[signedup].date);
+              console.log(user[purchased].date);
+              console.log('---------------');
+              arrayCollection.push(user);
+            }
+          }
+        }
+      }
+
+
+
+      // adds count props to scope
       function buildScopeVars(props) {
         for (var prop in props) {
             if (props.hasOwnProperty(prop)) {
@@ -93,7 +119,7 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
 
 
 
-      //console.log(count);
+      console.log(count);
     }
 
     // error calling json

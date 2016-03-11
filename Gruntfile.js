@@ -5,7 +5,8 @@ module.exports = function(grunt) {
       dist: {
         options: {
           style: 'compressed',
-          sourcemap: 'none'
+          sourcemap: 'none',
+          compass: true
         },
         files: {
           'css/main.min.css': 'css/scss/*.scss'

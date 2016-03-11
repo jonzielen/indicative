@@ -12,17 +12,8 @@ siteApp.controller('StatsCtrl', function($scope, dataFactory) {
 
   // successful json call
   function successCallback(response) {
-    $scope.data = response;
+    $scope.users = response;
     $scope.totalRecords = response.length;
-    $scope.addRow = function() {
-      dataFactory.getUser()
-      .success(function(user) {
-        console.log(user);
-      })
-      .error(function(error) {
-        throw 'Could not add user: ' + error.message;
-      });
-    };
 
     // counts
     var count = {
@@ -36,7 +27,7 @@ siteApp.controller('StatsCtrl', function($scope, dataFactory) {
       conversions: []
     };
 
-    $scope.data.forEach(function(user) {
+    $scope.users.forEach(function(user) {
       // count number of men/women
       genderCheck(user);
 
@@ -132,5 +123,17 @@ siteApp.controller('StatsCtrl', function($scope, dataFactory) {
 
 
     console.log(count);
+
+    $scope.addRow = function() {
+      dataFactory.getUser()
+      .success(function(u) {
+        $scope.users.unshift(u[0]);
+        $scope.clicked = true;
+      })
+      .error(function(error) {
+        throw 'Could not add user: ' + error.message;
+      });
+    };
+
   }
 });

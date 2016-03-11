@@ -58,9 +58,19 @@ table {
   display: block;
 }
 
-#stats-first-name-search {
-
-}
 #stats-add-row {
   float:right;
+}
+
+.col {
+  width:33%;
+  float: left;
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+    }
+  }
 }

@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <input type="text" id="stats-first-name-search">
+    <input type="text" id="stats-first-name-search" ng-model="search.first_name">
     <button id="stats-add-row">ADD ROW</button>
 
     <table>
@@ -54,7 +54,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="user in data">
+        <tr ng-repeat="user in data | filter:search:strict">
           <td>{{user.first_name}}</td>
           <td>{{user.last_name}}</td>
           <td>{{user.gender}}</td>
@@ -69,6 +69,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
   <script src="js/app/controllers/statsController.js"></script>
+  <script src="js/app/factory/factory.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 </html>

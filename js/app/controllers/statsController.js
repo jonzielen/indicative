@@ -1,13 +1,28 @@
 var siteApp = angular.module('statsPageApp', []);
 
-siteApp.controller('StatsCtrl', function($scope, $http) {
-    // local json call to data
-    $http.get('js/assignment-table-data.json').then(successCallback, errorCallback);
+siteApp.controller('StatsCtrl', function($scope, dataFactory) {
+
+
+
+    getCustomers();
+
+    function getCustomers() {
+      dataFactory.getUsers()
+        .success(function(users) {
+          successCallback(users);
+        })
+        .error(function(error) {
+          $scope.status = 'There was an error loading the data: ' + error.message;
+        });
+    }
+
 
     // successful json call
     function successCallback(response) {
-      $scope.data = response.data;
-      $scope.totalRecords = response.data.length;
+      // $scope.data = response.data;
+      // $scope.totalRecords = response.data.length;
+      $scope.data = response;
+      $scope.totalRecords = response.length;
 
       // counts
       var count = {
@@ -120,10 +135,5 @@ siteApp.controller('StatsCtrl', function($scope, $http) {
 
 
       console.log(count);
-    }
-
-    // error calling json
-    function errorCallback() {
-      $scope.data = 'an error';
     }
 });

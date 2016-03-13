@@ -1,8 +1,8 @@
 var siteApp = angular.module('statsPageApp', []);
 
-siteApp.controller('StatsCtrl', function($scope, dataFactory) {
+siteApp.controller('StatsCtrl', function($scope, statsFactory) {
   // json call
-  dataFactory.getUsers()
+  statsFactory.getUsers()
   .success(function(users) {
     successCallback(users);
   })
@@ -126,7 +126,7 @@ siteApp.controller('StatsCtrl', function($scope, dataFactory) {
     console.log(count);
 
     $scope.addRow = function() {
-      dataFactory.getUser()
+      statsFactory.getUser()
       .success(function(u) {
         $scope.users.unshift(u[0]);
         $scope.clicked = true;

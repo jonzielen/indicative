@@ -1,4 +1,4 @@
-siteApp.factory('dataFactory', function($http) {
+siteApp.factory('statsFactory', function($http) {
   return {
     getUsers: function() {
       return $http.get('js/assignment-table-data.json');

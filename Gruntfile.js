@@ -15,17 +15,29 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        mangle: true,
         compress: true
       },
-      build: {
-        src: ['js/src/*.js'],
-        dest: 'js/main.min.js'
+      regularJS: {
+        options: {
+          mangle: true
+        },
+        files: {
+          'js/main.min.js':'js/src/*.js'
+        }
+      },
+      app: {
+        options: {
+          mangle: false
+        },
+        files: {
+          'js/app/controllers/statsController.min.js':'js/app/controllers/statsController.src.js',
+          'js/app/factory/statsFactory.min.js':'js/app/factory/statsFactory.src.js'
+        }
       }
     },
     watch: {
       scripts: {
-        files: ['js/src/*.js'],
+        files: ['js/src/*.js', 'js/app/**/*.src.js'],
         tasks: ['uglify'],
         options: {
           spawn: false

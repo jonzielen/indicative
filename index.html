@@ -7,39 +7,40 @@
 </head>
 <body>
   <div ng-controller="StatsCtrl">
-    <!-- <pre>{{users | json}}</pre> -->
-    <h1 id="stats-header">STATS</h1>
+    <div class="upper">
+      <h1 id="stats-header">STATS</h1>
 
-    <div id="stats-columns" class="clearfix">
-      <div class="col">
-        <ul>
-          <li>Total Users: <span>{{totalRecords | number}}</span></li>
-          <li>Total Colors: <span>{{colorsCount | number}}</span></li>
-          <li>Percent of Females: <span>{{males | number:2}}</span>%</li>
-          <li>Percent of Males: <span>{{females | number:2}}</span>%</li>
-        </ul>
+      <div id="stats-columns" class="clearfix">
+        <div class="col">
+          <ul>
+            <li>Total Users: <span>{{totalRecords | number}}</span></li>
+            <li>Total Colors: <span>{{colorsCount | number}}</span></li>
+            <li>Percent of Females: <span>{{males | number:2}}</span>%</li>
+            <li>Percent of Males: <span>{{females | number:2}}</span>%</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <ul>
+            <li>Total users who performed a "signed_up": <span>{{signedup | number}}</span></li>
+            <li>Total users who performed a "viewed_profile": <span>{{viewedProfile | number}}</span></li>
+            <li>Total users who performed a "view_item": <span>{{viewedItem | number}}</span></li>
+            <li>Total users who performed a "purchased_item": <span>{{purchasedItem | number}}</span></li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <ul>
+            <li>Conversion from Signup -> Purchase: <span>{{conversions | number:2}}</span>%</li>
+            <li>Conversion from Signup -> Viewed Profile -> Purchase: <span>{{conversions | number:2}}</span>%</li>
+            <li>Conversion from Signup -> Viewed Item -> Purchase Item: <span>{{conversions | number:2}}</span>%</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="col">
-        <ul>
-          <li>Total users who performed a "signed_up": <span>{{signedup | number}}</span></li>
-          <li>Total users who performed a "viewed_profile": <span>{{viewedProfile | number}}</span></li>
-          <li>Total users who performed a "view_item": <span>{{viewedItem | number}}</span></li>
-          <li>Total users who performed a "purchased_item": <span>{{purchasedItem | number}}</span></li>
-        </ul>
-      </div>
-
-      <div class="col">
-        <ul>
-          <li>Conversion from Signup -> Purchase: <span>{{conversions | number:2}}</span>%</li>
-          <li>Conversion from Signup -> Viewed Profile -> Purchase: <span>{{conversions | number:2}}</span>%</li>
-          <li>Conversion from Signup -> Viewed Item -> Purchase Item: <span>{{conversions | number:2}}</span>%</li>
-        </ul>
-      </div>
+      <input type="text" id="stats-first-name-search" ng-model="search.first_name">
+      <button id="stats-add-row" ng-click="addRow()" ng-disabled="clicked">ADD ROW</button>
     </div>
-
-    <input type="text" id="stats-first-name-search" ng-model="search.first_name">
-    <button id="stats-add-row" ng-click="addRow()" ng-disabled="clicked">ADD ROW</button>
 
     <table>
       <thead>

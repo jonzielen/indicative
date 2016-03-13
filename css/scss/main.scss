@@ -82,7 +82,8 @@ table {
 }
 
 #stats-columns.show {
-  display: block;
+  @include display-flex;
+  @include justify-content(space-around);
 }
 
 #stats-add-row {
@@ -90,8 +91,8 @@ table {
 }
 
 .col {
-  width:33%;
-  float: left;
+  @include flex(0 1 auto);
+
   ul {
     padding: 0;
     margin: 0;

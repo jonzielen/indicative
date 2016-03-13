@@ -56,10 +56,10 @@ table {
       @include flex(1 0 8%);
     }
     &:nth-child(4) {
-      @include flex(3 0 12%);
+      @include flex(3 0 10%);
     }
     &:nth-child(5) {
-      @include flex(5 0 14%);
+      @include flex(5 0 13%);
     }
     &:nth-child(6) {
       @include flex(10 0 18%);

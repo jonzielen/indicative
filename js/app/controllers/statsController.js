@@ -12,6 +12,7 @@ siteApp.controller('StatsCtrl', function($scope, dataFactory) {
 
   // successful json call
   function successCallback(response) {
+    console.log('called');
     $scope.users = response;
     $scope.totalRecords = response.length;
 
@@ -129,11 +130,11 @@ siteApp.controller('StatsCtrl', function($scope, dataFactory) {
       .success(function(u) {
         $scope.users.unshift(u[0]);
         $scope.clicked = true;
+        successCallback($scope.users);
       })
       .error(function(error) {
         throw 'Could not add user: ' + error.message;
       });
     };
-
   }
 });

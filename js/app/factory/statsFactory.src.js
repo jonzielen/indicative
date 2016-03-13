@@ -1,10 +1,10 @@
 siteApp.factory('statsFactory', function($http) {
   return {
     getUsers: function() {
-      return $http.get('js/assignment-table-data.json');
+      return $http.get('js/resources/assignment-table-data.json');
     },
     getUser: function() {
-      return $http.get('js/assignment-table-data-add.json');
+      return $http.get('js/resources/assignment-table-data-add.json');
     }
   };
 });

@@ -32,8 +32,8 @@
         <div class="col">
           <ul>
             <li>Conversion from Signup -> Purchase: <span>{{conversions | number:2}}</span>%</li>
-            <li>Conversion from Signup -> Viewed Profile -> Purchase: <span>{{conversions | number:2}}</span>%</li>
-            <li>Conversion from Signup -> Viewed Item -> Purchase Item: <span>{{conversions | number:2}}</span>%</li>
+            <li>Conversion from Signup -> Viewed Profile -> Purchase: <span>{{conversionsViewedProfile | number:2}}</span>%</li>
+            <li>Conversion from Signup -> Viewed Item -> Purchase Item: <span>{{conversionsViewedItem | number:2}}</span>%</li>
           </ul>
         </div>
       </div>
@@ -69,7 +69,7 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
-  <script src="js/app/controllers/statsController.min.js"></script>
+  <script src="js/app/controllers/statsController.src.js"></script>
   <script src="js/app/factory/statsFactory.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>

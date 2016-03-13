@@ -97,18 +97,54 @@ siteApp.controller('StatsCtrl', function($scope, statsFactory) {
 
     // gets conversions
     function conversions(signedup, purchased, user, conditional, arrayCollection) {
+      var signedUpAndPurchased = getSignedUpAndPurchased(user, signedup, purchased),
+          completePurchase = getCompletedPurchase(user, purchased),
+          signupsBeforePurchase = getSignupsBeforePurchase(user, signedup, purchased, conditional),
+          userConditional = hasConditional(user, conditional, signedup, purchased);
 
-      //console.log(conditional);
+      if (signedUpAndPurchased && completePurchase && signupsBeforePurchase && userConditional) {
+        arrayCollection.push(user);
+      }
+    }
 
-      // check if user has signed up and has purchased prop
+    // returns true on users who signed up and purched an item
+    function getSignedUpAndPurchased(user, signedup, purchased) {
       if (user.hasOwnProperty(signedup) && user.hasOwnProperty(purchased)) {
-        // check if purchased was comeplete, by checking date
-        if (user[purchased].hasOwnProperty('date')) {
-          // if the user signup date is the same or before purchase date
-          if (new Date(user[signedup].date) <= new Date(user[purchased].date)) {
-            arrayCollection.push(user);
-          }
+        return true;
+      }
+      return false;
+    }
+
+    // returns true on users who have a date associated with their purchase
+    function getCompletedPurchase(user, purchased) {
+      if (user[purchased] !== undefined && user[purchased].hasOwnProperty('date')) {
+        return true;
+      }
+      return false;
+    }
+
+    // returns true if signup date is same or before purchased date
+    function getSignupsBeforePurchase(user, signedup, purchased) {
+      if (user[signedup] !== undefined &&
+          user[purchased] !== undefined &&
+          new Date(user[signedup].date) <= new Date(user[purchased].date)) {
+        return true;
+      }
+      return false;
+    }
+
+    // returns true if conditional is true
+    function hasConditional(user, conditional, signedup, purchased) {
+      if (conditional === '') {
+        return true;
+      } else {
+        if (user[signedup] !== undefined &&
+            user[purchased] !== undefined &&
+            user[conditional] !== undefined &&
+            new Date(user[signedup].date) <= new Date(user[conditional].date) <= new Date(user[purchased].date)) {
+          return true;
         }
+        return false;
       }
     }
 

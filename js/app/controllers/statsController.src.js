@@ -127,7 +127,7 @@ siteApp.controller('StatsCtrl', function($scope, statsFactory) {
     function getSignupsBeforePurchase(user, signedup, purchased) {
       if (user[signedup] !== undefined &&
           user[purchased] !== undefined &&
-          new Date(user[signedup].date) <= new Date(user[purchased].date)) {
+          new Date(user[signedup].date).getTime() <= new Date(user[purchased].date).getTime()) {
         return true;
       }
       return false;
@@ -138,10 +138,15 @@ siteApp.controller('StatsCtrl', function($scope, statsFactory) {
       if (conditional === '') {
         return true;
       } else {
+        // 1) check that start date is less than purchased date
+        // 2) check that condtional date is greater than start date
+        // 3) check that conditional date is less than purchased date
         if (user[signedup] !== undefined &&
             user[purchased] !== undefined &&
             user[conditional] !== undefined &&
-            new Date(user[signedup].date) <= new Date(user[conditional].date) <= new Date(user[purchased].date)) {
+            (new Date(user[signedup].date).getTime() <= new Date(user[purchased].date).getTime()) &&
+            (new Date(user[conditional].date).getTime() >= new Date(user[signedup].date).getTime()) &&
+            (new Date(user[conditional].date).getTime() < new Date(user[purchased].date).getTime())) {
           return true;
         }
         return false;
@@ -165,7 +170,7 @@ siteApp.controller('StatsCtrl', function($scope, statsFactory) {
       }
     }
 
-    // call to build buil scope vars
+    // call to build build scope vars
     buildScopeVars(stats);
 
     $scope.addRow = function() {
